@@ -6,8 +6,9 @@ import Home from "./components/home";
 
 import { AuthProvider } from "./contexts/authContext";
 import { useRoutes } from "react-router-dom";
-
+import {generateDate} from "./util/calendar.js";
 function App() {
+  console.log(generateDate());
   const routesArray = [
     {
       path: "*",
