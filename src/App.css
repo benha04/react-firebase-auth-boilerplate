@@ -1,3 +1,19 @@
+/* App.css or your main CSS file */
+
+/* Home page background color */
+body {
+  background-color: #101827;
+  color: #101827;
+}
+
+/* Sticky notes background color */
+.sticky-note {
+  background-color: #101827;
+  color: #eee;
+  /* other styles for sticky notes */
+}
+
+
 .App {
   text-align: center;
 }

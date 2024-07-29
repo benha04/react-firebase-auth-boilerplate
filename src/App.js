@@ -8,7 +8,7 @@ import Home from "./components/home";
 import Kanban from "./components/kanban/kanban.jsx";
 import { AuthProvider } from "./contexts/authContext";
 import { generateDate } from "./util/calendar.js";
-
+import './App.css';
 function App() {
   console.log(generateDate());
   const routesArray = [
