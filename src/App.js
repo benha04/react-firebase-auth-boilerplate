@@ -1,12 +1,14 @@
+import React from 'react';
+import { useRoutes } from 'react-router-dom';
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
-
+import { ChakraProvider } from '@chakra-ui/react';
 import Header from "./components/header";
 import Home from "./components/home";
-
+import Kanban from "./components/kanban/kanban.jsx";
 import { AuthProvider } from "./contexts/authContext";
-import { useRoutes } from "react-router-dom";
-import {generateDate} from "./util/calendar.js";
+import { generateDate } from "./util/calendar.js";
+
 function App() {
   console.log(generateDate());
   const routesArray = [
@@ -25,6 +27,10 @@ function App() {
     {
       path: "/home",
       element: <Home />,
+    },
+    {
+      path: "/kanban",
+      element: <Kanban />,
     },
   ];
   let routesElement = useRoutes(routesArray);

@@ -1,0 +1,80 @@
+
+body {
+    background-color: #1a202c; /* Adjusted color to match the dark theme */
+    color: #e2e8f0;
+  }
+  .notes-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #4a5568; /* Optional: adds a border to separate sections */
+  }
+  
+  .note-container {
+    background-color: #2d3748;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  
+  .sidebar {
+    background-color: #2d3748;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  
+  .custom-scroll {
+    overflow-y: auto;
+    max-height: 400px;
+  }
+  
+  .note {
+    background-color: #4a5568;
+    color: #e2e8f0;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .note textarea {
+    background-color: transparent;
+    border: none;
+    color: #e2e8f0;
+    width: 100%;
+    resize: none;
+  }
+  
+  .note_footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .note_footer img {
+    cursor: pointer;
+  }
+  
+  h2, h3 {
+    color: #e2e8f0;
+  }
+  .notes-section {
+    margin-top: 2rem;
+  }
+  .tasks-scrollbar {
+    max-height: 200px; /* Adjust the height as needed */
+    overflow-y: auto;
+  }
+  
+  .tasks-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .tasks-scrollbar::-webkit-scrollbar-track {
+    background: #2d3748; /* Scrollbar track color */
+  }
+  
+  .tasks-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #4a5568; /* Scrollbar thumb color */
+    border-radius: 10px;
+  }
+  

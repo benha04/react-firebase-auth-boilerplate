@@ -1,0 +1,44 @@
+.kanban-container {
+    height: 100vh;
+    width: 100%;
+    background-color: #1a202c;
+    color: #e2e8f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .kanban-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+    width: 500px;
+    max-width: 90%;
+    background-color: #2d3748;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: #e2e8f0;
+  }
+  
+.chakra-modal__content {
+  background-color: #2d3748; /* Dark modal background */
+  color: #e2e8f0; /* Light text color */
+  max-width: 500px; /* Restrict the width */
+  margin: auto; /* Center the modal */
+  margin-top: 10%; /* Add top margin to center vertically */
+}
+
+.chakra-input,
+.chakra-select {
+  background-color: #4a5568; /* Dark input background */
+  color: #e2e8f0; /* Light text color */
+  border: none;
+}
+
+.chakra-input::placeholder,
+.chakra-select::placeholder {
+  color: #a0aec0; /* Placeholder color */
+}
