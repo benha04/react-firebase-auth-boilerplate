@@ -10,7 +10,7 @@ import { firestore } from '../../firebase/firebase';
 import { collection, doc, query, getDocs, addDoc, deleteDoc, updateDoc } from "firebase/firestore";
 import Sidebar from '../HomeNotes/Sidebar';
 import NoteContainer from '../HomeNotes/NoteContainer';
-import "../pomodoro/index.css";  // Add this for custom styling
+import "./index.css";  // Add this for custom styling
 
 const Home = () => {
   const { currentUser } = useAuth();
@@ -19,7 +19,6 @@ const Home = () => {
   const [today, setToday] = useState(currentDate);
   const [selectDate, setSelectDate] = useState(currentDate);
   const [showModal, setShowModal] = useState(false);
-  const [initialTaskValues, setInitialTaskValues] = useState({});
   const [taskName, setTaskName] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("Medium");
@@ -164,12 +163,10 @@ const Home = () => {
 
   const openModalWithDate = (date) => {
     setShowModal(true);
-    setInitialTaskValues({
-      taskName: '',
-      description: '',
-      priority: 'Medium',
-      dueDate: date.format('YYYY-MM-DD')
-    });
+    setTaskName('');
+    setDescription('');
+    setPriority('Medium');
+    setDueDate(date.format('YYYY-MM-DD'));
   };
 
   return (
@@ -180,7 +177,7 @@ const Home = () => {
             <h1 className="font-semibold text-gray-100">Upcoming Tasks</h1>
             {upcomingTasks.length > 0 ? (
               upcomingTasks.map((task, index) => (
-                <div key={index} className="p-4 mb-4 bg-gray-800 rounded-lg cursor-pointer" onClick={() => setSelectedTask(task)}>
+                <div key={index} className="p-4 mb-4 bg-gray-800 rounded-lg cursor-pointer task-button" onClick={() => setSelectedTask(task)}>
                   <h2 className="font-semibold text-gray-300">{task.name}</h2>
                   <p>{task.description}</p>
                   <p>{dayjs(task.due_date).toDate().toDateString()}</p>
@@ -244,10 +241,10 @@ const Home = () => {
             </div>
             <div className="mt-8">
               <h1 className="font-semibold text-gray-100">Tasks for {selectDate.toDate().toDateString()}</h1>
-              <div className="h-32 overflow-y-scroll">
+              <div className="tasks-scrollbar">
                 {tasksForSelectedDate.length > 0 ? (
                   tasksForSelectedDate.map((task, index) => (
-                    <div key={index} className="p-4 mb-4 bg-gray-800 rounded-lg cursor-pointer" onClick={() => setSelectedTask(task)}>
+                    <div key={index} className="p-4 mb-4 bg-gray-800 rounded-lg cursor-pointer task-button" onClick={() => setSelectedTask(task)}>
                       <h2 className="font-semibold text-gray-300">{task.name}</h2>
                       <p>{task.description}</p>
                       <p>{dayjs(task.due_date).toDate().toDateString()}</p>
@@ -261,7 +258,7 @@ const Home = () => {
                 )}
               </div>
               <button
-                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 task-button"
                 onClick={() => openModalWithDate(selectDate)}
               >
                 Add Task
@@ -270,26 +267,26 @@ const Home = () => {
           </div>
         </div>
         {showModal && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <div className="bg-gray-800 p-6 rounded shadow-lg text-gray-300">
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center modal show">
+            <div className="bg-gray-800 p-6 rounded shadow-lg text-gray-300 modal-content">
               <h2 className="text-lg font-semibold mb-4">Add New Task</h2>
               <input
                 type="text"
                 className="w-full p-2 mb-4 bg-gray-700 text-white rounded"
                 placeholder="Task Name"
-                value={initialTaskValues.taskName}
+                value={taskName}
                 onChange={(e) => setTaskName(e.target.value)}
               />
               <input
                 type="text"
                 className="w-full p-2 mb-4 bg-gray-700 text-white rounded"
                 placeholder="Task Description"
-                value={initialTaskValues.description}
+                value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
               <select
                 className="w-full p-2 mb-4 bg-gray-700 text-white rounded"
-                value={initialTaskValues.priority}
+                value={priority}
                 onChange={(e) => setPriority(e.target.value)}
               >
                 <option value="Low">Low</option>
@@ -299,7 +296,7 @@ const Home = () => {
               <input
                 type="date"
                 className="w-full p-2 mb-4 bg-gray-700 text-white rounded"
-                value={initialTaskValues.dueDate}
+                value={dueDate}
                 onChange={(e) => setDueDate(e.target.value)}
               />
               <div className="flex justify-end gap-4">
